@@ -10,6 +10,7 @@ import (
 )
 
 func Problem1() (distance int, occurencesTotal int) {
+	defer utils.TimeFn("Problem1")()
 	// read input from file
 	data, err := os.ReadFile(utils.PWD() + "/problem1/problem1_input.txt")
 	if err != nil {
