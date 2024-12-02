@@ -8,6 +8,21 @@ import (
 	"strings"
 )
 
+func exhaust(arr []int) bool {
+	for i, _ := range arr {
+		removedI := make([]int, len(arr))
+		copy(removedI, arr)
+		removedI = append(removedI[:i], removedI[i+1:]...)
+		if isIncreasing(removedI) {
+			return true
+		} else if isDecreasing(removedI) {
+			return true
+		}
+	}
+
+	return false
+}
+
 func isIncreasing(arr []int) bool {
 	curr := arr[0]
 	for _, v := range arr[1:] {
@@ -59,18 +74,11 @@ func Problem2() (pureSafe int, dampedSafe int) {
 			pureSafe += 1
 		} else if isDecreasing(splittedDataInts) {
 			pureSafe += 1
-		} else {
-			fmt.Printf("false :- %v\n", splittedDataInts)
+		} else if exhaust(splittedDataInts) {
+			dampedSafe += 1
 		}
-
-		// fmt.Printf("Before curr :- %v\n", splittedDataInts)
-		// check damped safe record
-		// if isIncreasing(splittedDataInts, true) {
-		// 	dampedSafe += 1
-		// } else if isDecreasing(splittedDataInts, true) {
-		// 	dampedSafe += 1
-		// }
-
 	}
+
+	dampedSafe += pureSafe
 	return
 }
