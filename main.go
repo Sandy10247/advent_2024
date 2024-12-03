@@ -15,6 +15,6 @@ func main() {
 	pureSafe, dampedSafe := problem2.Problem2()
 	fmt.Printf("total safe records :- \npure %v, damped :- %v\n", pureSafe, dampedSafe)
 
-	totalMul := problem3.Problem2()
-	fmt.Printf("Problem 3 :- %v\n", totalMul)
+	totalMul, totalWithCorruped := problem3.Problem2()
+	fmt.Printf("Problem 3 :- %v, %v\n", totalMul, totalWithCorruped)
 }
